@@ -1,1 +1,1 @@
-# DatabasePlayBook
+# DatabasePlayBook [![Maintainability](https://api.codeclimate.com/v1/badges/5cc6b6353b98c95f7e23/maintainability)](https://codeclimate.com/github/WinstonKamau/DatabasePlayBook/maintainability) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
