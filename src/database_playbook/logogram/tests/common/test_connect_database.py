@@ -3,7 +3,6 @@ from logogram.tests.base_test import BaseTestCase
 from logogram.common.connect_to_database import (
     check_variables, fetch_database_config_variables, connect_to_database)
 from django.core.management.base import CommandError
-from django.conf import settings
 from django.test import override_settings
 
 
@@ -46,7 +45,7 @@ class DatabaseConnection(BaseTestCase):
         'CONN_MAX_AGE': 0, 'OPTIONS': {}, 'TIME_ZONE': None, 'TEST': {
             'CHARSET': None, 'COLLATION': None, 'NAME': None, 'MIRROR': None
             }}})
-    def test_fetch_database_config_variables(self):
+    def test_fetch_database_config_variables_fail(self):
         """
         Test lack of a database credential such as user will raise an error
         """
