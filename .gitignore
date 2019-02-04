@@ -1,2 +1,7 @@
 # Ignore application secrets
 .env
+# Ignore coverage generate data
+htmlcov
+.coverage
+# Ignore system dependant commands
+Makefile
