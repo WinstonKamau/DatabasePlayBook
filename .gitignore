@@ -5,3 +5,5 @@ htmlcov
 .coverage
 # Ignore system dependant commands
 Makefile
+# Ignore vs code settings
+.vscode
