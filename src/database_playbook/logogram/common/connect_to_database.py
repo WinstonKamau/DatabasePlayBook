@@ -10,7 +10,7 @@ def connect_to_database():
         db = fetch_database_config_variables()
         connection = psycopg2.connect(**db)
         cursor = connection.cursor()
-        return cursor
+        return (cursor, connection)
     except (Exception, psycopg2.DatabaseError) as error:
         raise CommandError(error)
 
