@@ -1,0 +1,4 @@
+version: "2"         # required to adjust maintainability checks
+exclude_patterns: ["src/database_playbook/logogram/common/management/", "config/", "db/",
+                    "dist/", "features/", "**/node_modules/", "script/", "**/spec/", "**/test/",
+                    "**/tests/", "Tests/", "**/vendor/", "**/*_test.go", "**/*.d.ts"]
