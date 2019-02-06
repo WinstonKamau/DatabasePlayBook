@@ -71,23 +71,8 @@ class CreateFlashCardsTable(BaseTestCase):
 
     def test_description_column(self):
         """
-        Test that the description column is created with the specified attributes
-            - That the description column type is text
-            - That the description column data can be Null
-        """
-        command = (
-            """
-            SELECT data_type, is_nullable
-            FROM INFORMATION_SCHEMA.COLUMNS
-            WHERE table_name = 'flashcards' and column_name='description';
-            """)
-        data = execute_command_fetch_data(command)
-        self.assertEqual(data[0][0], 'text')
-        self.assertEqual(data[0][1], 'YES')
-
-    def test_description_column(self):
-        """
-        Test that the description column is created with the specified attributes
+        Test that the description column is created with the specified
+        attributes
             - That the description column type is text
             - That the description column data can be Null
         """
