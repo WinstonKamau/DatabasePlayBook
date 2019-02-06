@@ -4,7 +4,7 @@ from logogram.flashcards.drop_table.drop_table import drop_flashcards_table
 
 
 class Command(BaseCommand):
-    help = ('Create tables on the application')
+    help = ('Drop tables on the application')
 
     def handle(self, *args, **options):
         try:
@@ -12,4 +12,4 @@ class Command(BaseCommand):
             drop_user_table()
         except Exception as error:
             raise CommandError(error)
-        self.stdout.write(self.style.SUCCESS('Database Tables Deleted'))
+        self.stdout.write(self.style.SUCCESS('Database Tables Dropped'))
