@@ -3,7 +3,7 @@ from logogram.common.execute_command import execute_command
 
 
 def drop_user_table():
-    """ create tables in the PostgreSQL database"""
+    """ Drop users table in the PostgreSQL database"""
     command = (
         """
         DROP Table users;
