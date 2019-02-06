@@ -57,10 +57,10 @@ class DatabaseConnection(BaseTestCase):
         Test that the cursor returned when executed will return some
         information
         """
-        cursor = connect_to_database()
+        (cursor, connection) = connect_to_database()
         cursor.execute('SELECT version()')
         db_version = cursor.fetchone()
-        cursor.close
+        cursor.close()
         self.assertIn('postgre', str(db_version).lower())
 
     @override_settings(DATABASES={'default': {
