@@ -4,7 +4,7 @@ from logogram.users.create_table.create_table import create_user_table
 from logogram.users.drop_table.drop_table import drop_user_table
 from logogram.common.execute.execute_command_fetch_data import (
     ExecuteCommandFetchData)
-from logogram.users.insert_rows.insert_rows import insert_row
+from logogram.users.insert_rows.insert_rows import insert_user_row
 import datetime
 
 
@@ -28,7 +28,7 @@ class CreateUserTable(BaseTestCase):
             NULL, NULL, now(), NULL
             """
             )
-        insert_row(values)
+        insert_user_row(values)
         select_user_command = (
             """
             SELECT * FROM users

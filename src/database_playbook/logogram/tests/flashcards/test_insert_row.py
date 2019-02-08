@@ -3,9 +3,8 @@ from logogram.tests.base_test import BaseTestCase
 from django.core import management
 from logogram.common.execute.execute_command_fetch_data import (
     ExecuteCommandFetchData)
-from logogram.flashcards.insert_rows.insert_row import insert_row
-from logogram.users.insert_rows.insert_rows import (
-    insert_row as insert_user_row)
+from logogram.flashcards.insert_rows.insert_row import insert_flashcard_row
+from logogram.users.insert_rows.insert_rows import insert_user_row
 
 
 class CreateUserTable(BaseTestCase):
@@ -35,7 +34,7 @@ class CreateUserTable(BaseTestCase):
             'Computer Science', 'Computer Science Flashcard', 1
             """
             )
-        insert_row(values)
+        insert_flashcard_row(values)
         select_user_command = (
             """
             SELECT * FROM flashcards

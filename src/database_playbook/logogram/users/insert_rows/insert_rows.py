@@ -2,7 +2,7 @@
 from logogram.common.execute.execute_command import ExecuteCommand
 
 
-def insert_row(values):
+def insert_user_row(values):
     """ INSERT user"""
     command = (
         """
