@@ -7,10 +7,10 @@ from logogram.flashcards.insert_rows.insert_row import insert_flashcard_row
 from logogram.users.insert_rows.insert_rows import insert_user_row
 
 
-class CreateUserTable(BaseTestCase):
+class InsertUserTable(BaseTestCase):
 
     def setUp(self):
-        super(CreateUserTable, self).setUp()
+        super(InsertUserTable, self).setUp()
         management.call_command('createtables')
         values = (
             """

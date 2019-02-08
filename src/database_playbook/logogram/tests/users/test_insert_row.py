@@ -8,10 +8,10 @@ from logogram.users.insert_rows.insert_rows import insert_user_row
 import datetime
 
 
-class CreateUserTable(BaseTestCase):
+class InsertUserTable(BaseTestCase):
 
     def setUp(self):
-        super(CreateUserTable, self).setUp()
+        super(InsertUserTable, self).setUp()
         create_user_table()
 
     def tearDown(self):
