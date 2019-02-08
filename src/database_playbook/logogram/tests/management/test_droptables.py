@@ -1,8 +1,8 @@
 """Test the python command droptables """
 from django.core import management
 from logogram.tests.base_test import BaseTestCase
-from logogram.common.execute_command_fetch_data import (
-    execute_command_fetch_data)
+from logogram.common.execute.execute_command_fetch_data import (
+    ExecuteCommandFetchData)
 
 
 class DropTables(BaseTestCase):
@@ -22,6 +22,6 @@ class DropTables(BaseTestCase):
             FROM pg_catalog.pg_tables
             WHERE schemaname = 'public';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertNotIn(('users',), data)
         self.assertNotIn(('flashcards',), data)

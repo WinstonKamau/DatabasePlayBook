@@ -2,8 +2,8 @@
 from logogram.tests.base_test import BaseTestCase
 from logogram.users.create_table.create_table import create_user_table
 from logogram.users.drop_table.drop_table import drop_user_table
-from logogram.common.execute_command_fetch_data import (
-    execute_command_fetch_data)
+from logogram.common.execute.execute_command_fetch_data import (
+    ExecuteCommandFetchData)
 
 
 class CreateUserTable(BaseTestCase):
@@ -30,7 +30,7 @@ class CreateUserTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'users' and column_name='id';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'integer')
         self.assertEqual(data[0][1], 'NO')
         self.assertEqual(data[0][2], 'BY DEFAULT')
@@ -41,7 +41,8 @@ class CreateUserTable(BaseTestCase):
             WHERE tablename = 'users' and indexname = 'users_pkey';
             """
         )
-        indices_data = execute_command_fetch_data(indices_command)
+        indices_data = ExecuteCommandFetchData().execute_command(
+            indices_command)
         id_index_create_command = (
             'CREATE UNIQUE INDEX users_pkey ON public.users USING btree (id)')
         self.assertEqual(indices_data[0][0], id_index_create_command)
@@ -59,7 +60,7 @@ class CreateUserTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'users' and column_name='password';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'character varying')
         self.assertEqual(data[0][1], 'NO')
         self.assertEqual(data[0][2], 128)
@@ -78,7 +79,7 @@ class CreateUserTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'users' and column_name='email';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'text')
         self.assertEqual(data[0][1], 'NO')
         indices_command = (
@@ -88,7 +89,8 @@ class CreateUserTable(BaseTestCase):
             WHERE tablename = 'users' and indexname = 'users_email_key';
             """
         )
-        indices_data = execute_command_fetch_data(indices_command)
+        indices_data = ExecuteCommandFetchData().execute_command(
+            indices_command)
         email_index_create_command = (
             'CREATE UNIQUE INDEX users_email_key ON public.users USING btree'
             ' (email)')
@@ -108,7 +110,7 @@ class CreateUserTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'users' and column_name='is_superuser';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'boolean')
         self.assertEqual(data[0][1], 'NO')
         self.assertEqual(data[0][2], 'false')
@@ -126,7 +128,7 @@ class CreateUserTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'users' and column_name='first_name';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'character varying')
         self.assertEqual(data[0][1], 'YES')
         self.assertEqual(data[0][2], 20)
@@ -144,7 +146,7 @@ class CreateUserTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'users' and column_name='last_name';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'character varying')
         self.assertEqual(data[0][1], 'YES')
         self.assertEqual(data[0][2], 20)
@@ -163,7 +165,7 @@ class CreateUserTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'users' and column_name='date_joined';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'date')
         self.assertEqual(data[0][1], 'NO')
         self.assertEqual(data[0][2], 'now()')
@@ -180,6 +182,6 @@ class CreateUserTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'users' and column_name='last_login';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'date')
         self.assertEqual(data[0][1], 'YES')

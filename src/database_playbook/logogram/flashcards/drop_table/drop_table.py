@@ -1,5 +1,5 @@
 """ Module for dropping the Flashcards entity schema."""
-from logogram.common.execute_command import execute_command
+from logogram.common.execute.execute_command import ExecuteCommand
 
 
 def drop_flashcards_table():
@@ -8,4 +8,4 @@ def drop_flashcards_table():
         """
         DROP Table flashcards;
         """)
-    execute_command(command)
+    ExecuteCommand().execute_command(command)

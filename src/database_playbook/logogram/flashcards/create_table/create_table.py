@@ -1,5 +1,5 @@
 """ Module for the Flashcards entity schema."""
-from logogram.common.execute_command import execute_command
+from logogram.common.execute.execute_command import ExecuteCommand
 
 
 def create_flashcards_table():
@@ -13,4 +13,4 @@ def create_flashcards_table():
         "users" integer REFERENCES "users" ON DELETE CASCADE
         )
         """)
-    execute_command(command)
+    ExecuteCommand().execute_command(command)

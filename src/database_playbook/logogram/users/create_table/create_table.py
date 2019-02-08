@@ -1,5 +1,5 @@
 """ Module for the Users entity schema."""
-from logogram.common.execute_command import execute_command
+from logogram.common.execute.execute_command import ExecuteCommand
 
 
 def create_user_table():
@@ -18,4 +18,4 @@ def create_user_table():
         "last_login" date NULL
         )
         """)
-    execute_command(command)
+    ExecuteCommand().execute_command(command)
