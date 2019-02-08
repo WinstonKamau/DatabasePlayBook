@@ -89,7 +89,8 @@ class CreateUserTable(BaseTestCase):
             WHERE tablename = 'users' and indexname = 'users_email_key';
             """
         )
-        indices_data = ExecuteCommandFetchData().execute_command(indices_command)
+        indices_data = ExecuteCommandFetchData().execute_command(
+            indices_command)
         email_index_create_command = (
             'CREATE UNIQUE INDEX users_email_key ON public.users USING btree'
             ' (email)')

@@ -6,7 +6,6 @@ from logogram.common.execute.execute_command_fetch_data import (
 from logogram.flashcards.insert_rows.insert_row import insert_row
 from logogram.users.insert_rows.insert_rows import (
     insert_row as insert_user_row)
-import datetime
 
 
 class CreateUserTable(BaseTestCase):
