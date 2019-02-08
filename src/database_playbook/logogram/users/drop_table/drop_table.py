@@ -1,5 +1,5 @@
 """ Module for dropping the Users entity schema."""
-from logogram.common.execute_command import execute_command
+from logogram.common.execute.execute_command import ExecuteCommand
 
 
 def drop_user_table():
@@ -8,4 +8,4 @@ def drop_user_table():
         """
         DROP Table users;
         """)
-    execute_command(command)
+    ExecuteCommand().execute_command(command)

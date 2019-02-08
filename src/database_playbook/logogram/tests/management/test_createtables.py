@@ -1,8 +1,8 @@
 """Test the python command createtables """
 from django.core import management
 from logogram.tests.base_test import BaseTestCase
-from logogram.common.execute_command_fetch_data import (
-    execute_command_fetch_data)
+from logogram.common.execute.execute_command_fetch_data import (
+    ExecuteCommandFetchData)
 
 
 class CreateTables(BaseTestCase):
@@ -24,6 +24,6 @@ class CreateTables(BaseTestCase):
             FROM pg_catalog.pg_tables
             WHERE schemaname = 'public';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertIn(('users',), data)
         self.assertIn(('flashcards',), data)

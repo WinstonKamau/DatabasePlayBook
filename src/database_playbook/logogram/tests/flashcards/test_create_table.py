@@ -6,8 +6,8 @@ from logogram.flashcards.create_table.create_table import (
     create_flashcards_table)
 from logogram.flashcards.drop_table.drop_table import (
     drop_flashcards_table)
-from logogram.common.execute_command_fetch_data import (
-    execute_command_fetch_data)
+from logogram.common.execute.execute_command_fetch_data import (
+    ExecuteCommandFetchData)
 
 
 class CreateFlashCardsTable(BaseTestCase):
@@ -36,7 +36,7 @@ class CreateFlashCardsTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'flashcards' and column_name='id';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'integer')
         self.assertEqual(data[0][1], 'NO')
         self.assertEqual(data[0][2], 'BY DEFAULT')
@@ -47,7 +47,8 @@ class CreateFlashCardsTable(BaseTestCase):
             WHERE tablename = 'flashcards' and indexname = 'flashcards_pkey';
             """
         )
-        indices_data = execute_command_fetch_data(indices_command)
+        indices_data = ExecuteCommandFetchData().execute_command(
+            indices_command)
         id_index_create_command = (
             'CREATE UNIQUE INDEX flashcards_pkey ON public.flashcards'
             ' USING btree (id)')
@@ -65,7 +66,7 @@ class CreateFlashCardsTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'flashcards' and column_name='name';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'text')
         self.assertEqual(data[0][1], 'NO')
 
@@ -82,7 +83,7 @@ class CreateFlashCardsTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'flashcards' and column_name='description';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'text')
         self.assertEqual(data[0][1], 'YES')
 
@@ -97,7 +98,7 @@ class CreateFlashCardsTable(BaseTestCase):
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE table_name = 'flashcards' and column_name='users';
             """)
-        data = execute_command_fetch_data(command)
+        data = ExecuteCommandFetchData().execute_command(command)
         self.assertEqual(data[0][0], 'integer')
         foreign_key_command = (
             """
@@ -107,6 +108,7 @@ class CreateFlashCardsTable(BaseTestCase):
             AND constraint_name = 'flashcards_users_fkey'
             """
         )
-        foreign_key_data = execute_command_fetch_data(foreign_key_command)
+        foreign_key_data = ExecuteCommandFetchData().execute_command(
+            foreign_key_command)
         self.assertEqual(foreign_key_data[0][0], 'FOREIGN KEY')
         self.assertEqual(foreign_key_data[0][1], 'YES')
