@@ -1,8 +1,6 @@
 """Test select_user_row application use case for Users entity """
 from logogram.tests.base_test import BaseTestCase
 from django.core import management
-from logogram.common.execute.execute_command_fetch_data import (
-    ExecuteCommandFetchData)
 from logogram.flashcards.insert_rows.insert_row import insert_flashcard_row
 from logogram.users.insert_rows.insert_rows import insert_user_row
 from logogram.flashcards.select_rows.select_rows import select_flashcard_row
