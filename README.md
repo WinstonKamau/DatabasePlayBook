@@ -51,10 +51,10 @@ Other application dependencies can be found [here](Pipfile)
     export DATABASE_PORT=5432
 #### Create tables on the database
     cd src/database_playbook
-    pipen run python manage.py createtables
+    pipenv run python manage.py createtables
 #### Drop tables on the database
     cd src/database_playbook
-    pipen run python manage.py droptables
+    pipenv run python manage.py droptables
 
 ## Testing
 
